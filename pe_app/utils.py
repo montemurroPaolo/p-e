@@ -127,12 +127,14 @@ def Create_csv(inner_df):
 
     if os.path.exists(csv_file_path):
         existing_data = pd.read_csv(csv_file_path)
-        inner_df['date'] = pd.to_datetime(inner_df['date'])
+        inner_df['date'] = pd.to_datetime(inner_df['date'], format='%Y-%m-%d %H:%M:%S.%f')
         if inner_df['date'].max() > pd.to_datetime(existing_data['date']).max():
             print("new_data")
             inner_df.to_csv(csv_file_path, mode='a', header=True, index=False)
     else:
         inner_df.to_csv(csv_file_path, index=False, header=True)
+
+
 
 def Create_csv_hour():
     csv_file_path = "{}/pe_data.csv".format(settings.BASE_DIR)

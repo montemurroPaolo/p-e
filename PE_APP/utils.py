@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
 import requests
 import pandas as pd
 from datetime import datetime
 import plotly.express as px
 import os
+from django.conf import settings
+
 pd.set_option('display.float_format', lambda x: '%.6f' % x)
 
 
@@ -117,7 +118,7 @@ def Plot_pe(inner_df):
     return fig
 
 def Create_csv(inner_df):
-    csv_file_path = "pe_data.csv"
+    csv_file_path = "{}/pe_data.csv".format(settings.BASE_DIR)
 
     if os.path.exists(csv_file_path):
         existing_data = pd.read_csv(csv_file_path)
@@ -129,8 +130,8 @@ def Create_csv(inner_df):
         inner_df.to_csv(csv_file_path, index=False, header=False)
 
 def Create_csv_hour():
-    csv_file_path = "pe_data.csv"
-    csv_file_hour_path = "pe_data_hour.csv"
+    csv_file_path = "{}/pe_data.csv".format(settings.BASE_DIR)
+    csv_file_hour_path = "{}/pe_data_hour.csv".format(settings.BASE_DIR)
 
     existing_data = pd.read_csv(csv_file_path)
     existing_data['date'] = pd.to_datetime(existing_data['date'])

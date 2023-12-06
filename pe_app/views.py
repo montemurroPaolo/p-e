@@ -21,7 +21,9 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-from django_plotly_dash.views import add_to_session, DjangoDashView
+from django_plotly_dash.views import add_to_session
+from django_plotly_dash.views import DjangoView
+
 
 def dash_page(request):
     csv_file_hour_path = "{}/pe_data_hour.csv".format(settings.BASE_DIR)
@@ -57,4 +59,4 @@ def dash_page(request):
                           template='plotly_dark')
         return fig
 
-    return DjangoDashView.as_view()(request, 'MyDashAppDashPage')
+    return DjangoView.as_view()(request, 'MyDashAppDashPage')

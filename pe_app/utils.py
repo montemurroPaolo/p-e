@@ -103,7 +103,7 @@ def Merge_and_clean(df, final_df):
     inner_df["pe7d"] = inner_df["market_cap"]/(inner_df["total7d"]*45)
     inner_df["pe24h"] = inner_df["market_cap"]/(inner_df["total24h"]*365)
     inner_df["market_cap"] = inner_df["market_cap"]/1000000
-    inner_df['date'] = pd.to_datetime(datetime.now())
+    inner_df['date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     return inner_df
 
@@ -134,7 +134,6 @@ def Create_csv(inner_df):
     if os.path.exists(csv_file_path):
         if inner_df['date'].max() > existing_data['date'].max():
             inner_df.to_csv(csv_file_path, mode='a', header=True, index=False)
-            print("here")
     else:
         inner_df.to_csv(csv_file_path, index=False, header=True)
 

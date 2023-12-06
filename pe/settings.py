@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['164.92.66.111', '127.0.0.1']
 
 INSTALLED_APPS = [
     'huey.contrib.djhuey',
-    "django_plotly_dash",
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +53,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pe.urls'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 TEMPLATES = [
     {

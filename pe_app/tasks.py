@@ -3,7 +3,12 @@ from huey.contrib.djhuey import periodic_task, task
 from .models import *
 from .utils import *
 
-@periodic_task(crontab(minute='*/10'))
+if test:
+    the_time = 1
+else:
+    the_time = 10
+
+@periodic_task(crontab(minute=f'*/{the_time}'))
 def every_one_mins():
 
     defillama = Get_defillama()

@@ -134,7 +134,7 @@ def Create_csv(inner_df):
         inner_df["date"] = pd.to_datetime(inner_df["date"])
 
         if inner_df['date'].max() > existing_data['date'].max():
-            inner_df.to_csv(csv_file_path, mode='a', header=True, index=False)
+            inner_df.to_csv(csv_file_path, mode='a', header=False, index=False)
     else:
         inner_df.to_csv(csv_file_path, index=False, header=True)
 

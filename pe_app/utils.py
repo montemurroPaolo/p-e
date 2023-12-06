@@ -86,6 +86,7 @@ def Coingecko_data():
 
     # Concatenate all dataframes into a single dataframe
     final_df = pd.concat(dfs, ignore_index=True)
+    print(final_df)
 
     final_df = final_df.dropna(subset=["name"])
     final_df["name"] = final_df["name"].str.lower()

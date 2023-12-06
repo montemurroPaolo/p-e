@@ -7,7 +7,6 @@ import os
 from django.conf import settings
 
 pd.set_option('display.float_format', lambda x: '%.6f' % x)
-
 test=True
 
 def Get_defillama():
@@ -132,13 +131,16 @@ def Create_csv(inner_df):
 
     if os.path.exists(csv_file_path):
         existing_data = pd.read_csv(csv_file_path)
-        existing_data["date"] = pd.to_datetime(existing_data["date"])
-        inner_df["date"] = pd.to_datetime(inner_df["date"])
-        
+
         print(existing_data["date"][0])
         print(type(existing_data["date"][0]))
         print(inner_df["date"][0])
         print(type(inner_df["date"][0]))
+        
+        existing_data["date"] = pd.to_datetime(existing_data["date"])
+        inner_df["date"] = pd.to_datetime(inner_df["date"])
+
+
 
         if inner_df['date'].max() > existing_data['date'].max():
             inner_df.to_csv(csv_file_path, mode='a', header=True, index=False)

@@ -129,20 +129,17 @@ def Create_csv(inner_df):
     csv_file_path = "{}/pe_data.csv".format(settings.BASE_DIR)
     print(inner_df["date"][0])
     print(type(inner_df["date"][0]))
-    
+
     existing_data = pd.read_csv(csv_file_path)
     existing_data["date"] = pd.to_datetime(existing_data["date"])
     print(existing_data["date"][0])
     print(type(existing_data["date"][0]))
 
 
-    if False: #os.path.exists(csv_file_path):
-
-
-        inner_df["date"] = pd.to_datetime(inner_df["date"])
-
+    if os.path.exists(csv_file_path):
         if inner_df['date'].max() > existing_data['date'].max():
             inner_df.to_csv(csv_file_path, mode='a', header=True, index=False)
+            print("here")
     else:
         inner_df.to_csv(csv_file_path, index=False, header=True)
 

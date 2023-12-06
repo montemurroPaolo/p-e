@@ -8,6 +8,7 @@ from django.conf import settings
 
 pd.set_option('display.float_format', lambda x: '%.6f' % x)
 
+test=True
 
 def Get_defillama():
     url = "https://api.llama.fi/overview/fees"
@@ -65,9 +66,13 @@ def Defillama_df_from_dict(data):
 def Coingecko_data():
     # Initialize an empty list to store dataframes
     dfs = []
+    if test:
+        range_max = 2
+    else:
+        range_max = 5
 
     # Loop through the first 30 pages
-    for page in range(1,5):
+    for page in range(1,range_max):
         url = "https://api.coingecko.com/api/v3/coins/markets"
         params = {
             "vs_currency": "usd",
@@ -127,9 +132,15 @@ def Create_csv(inner_df):
 
     if os.path.exists(csv_file_path):
         existing_data = pd.read_csv(csv_file_path)
-        inner_df['date'] = pd.to_datetime(inner_df['date'], format='%Y-%m-%d %H:%M:%S.%f')
-        if inner_df['date'].max() > pd.to_datetime(existing_data['date']).max():
-            print("new_data")
+        existing_data["date"] = pd.to_datetime(existing_data["date"])
+        inner_df["date"] = pd.to_datetime(inner_df["date"])
+        
+        print(existing_data["date"][0])
+        print(type(existing_data["date"][0]))
+        print(inner_df["date"][0])
+        print(type(inner_df["date"][0]))
+
+        if inner_df['date'].max() > existing_data['date'].max():
             inner_df.to_csv(csv_file_path, mode='a', header=True, index=False)
     else:
         inner_df.to_csv(csv_file_path, index=False, header=True)

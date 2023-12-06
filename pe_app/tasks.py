@@ -19,4 +19,4 @@ def every_one_mins():
     merged = Merge_and_clean(defillama,coingecko)
 
     Create_csv(merged)
-    #Create_csv_hour()
+    Create_csv_hour()

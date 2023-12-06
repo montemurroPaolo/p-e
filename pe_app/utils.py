@@ -127,11 +127,10 @@ def Plot_pe(inner_df):
 
 def Create_csv(inner_df):
     csv_file_path = "{}/pe_data.csv".format(settings.BASE_DIR)
- 
-    existing_data = pd.read_csv(csv_file_path)
-    existing_data["date"] = pd.to_datetime(existing_data["date"])
 
     if os.path.exists(csv_file_path):
+        existing_data = pd.read_csv(csv_file_path)
+        existing_data["date"] = pd.to_datetime(existing_data["date"])
         if inner_df['date'].max() > existing_data['date'].max():
             inner_df.to_csv(csv_file_path, mode='a', header=True, index=False)
     else:

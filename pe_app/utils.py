@@ -110,6 +110,10 @@ def Plot_pe(inner_df):
     labels = ['a 0-10', 'b 10-25', 'c 25-50', 'd 50-100', 'e 100-250', 'f 250-1000', 'g 1000+']
 
     inner_df['market_cap_category'] = pd.cut(inner_df['market_cap'], bins=bins, labels=labels, right=False).astype(str)
+
+    # Keep only last date
+    inner_df = inner_df[inner_df['date'] == inner_df['date'].max()]
+
     fig = px.bar(inner_df, x="name", y="pe30d", log_y=True, title="Total30d Histogram", 
                 hover_data=hover_data, color="market_cap_category", category_orders={"market_cap_category": labels})
 

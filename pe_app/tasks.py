@@ -6,7 +6,7 @@ from .utils import *
 if test:
     the_time = 1
 else:
-    the_time = 10
+    the_time = 5
 
 @periodic_task(crontab(minute=f'*/{the_time}'))
 def every_one_mins():

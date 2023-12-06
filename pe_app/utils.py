@@ -138,8 +138,6 @@ def Create_csv(inner_df):
     else:
         inner_df.to_csv(csv_file_path, index=False, header=True)
 
-
-
 def Create_csv_hour():
     csv_file_path = "{}/pe_data.csv".format(settings.BASE_DIR)
     csv_file_hour_path = "{}/pe_data_hour.csv".format(settings.BASE_DIR)

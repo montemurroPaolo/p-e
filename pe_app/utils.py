@@ -67,7 +67,7 @@ def Coingecko_data():
     dfs = []
 
     # Loop through the first 30 pages
-    for page in range(1,6):
+    for page in range(1,2):
         url = "https://api.coingecko.com/api/v3/coins/markets"
         params = {
             "vs_currency": "usd",

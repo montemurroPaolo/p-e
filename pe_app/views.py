@@ -21,12 +21,16 @@ def home(request):
     return render(request, 'home.html', context)
 
 
+from django_plotly_dash.views import add_to_session, DjangoDashView
+
 def dash_page(request):
     csv_file_hour_path = "{}/pe_data_hour.csv".format(settings.BASE_DIR)
-    
+
     inner_df = pd.read_csv(csv_file_hour_path)
 
     app = DjangoDash('MyDashAppDashPage')
+    add_to_session({'app_id': 'MyDashAppDashPage'})  # Add this line
+
     app.layout = html.Div([
         html.Label('Select Tokens to Plot:'),
         dcc.Dropdown(
@@ -53,5 +57,4 @@ def dash_page(request):
                           template='plotly_dark')
         return fig
 
-    app.run_server(debug=False, use_reloader=False)
-    return render(request, 'dash_page.html')
+    return DjangoDashView.as_view()(request, 'MyDashAppDashPage')

@@ -22,7 +22,9 @@ def home(request):
 
 
 def dash_page(request):
-    inner_df = "{}/pe_data_hour.csv".format(settings.BASE_DIR)
+    csv_file_hour_path = "{}/pe_data_hour.csv".format(settings.BASE_DIR)
+    
+    inner_df = pd.read_csv(csv_file_hour_path)
 
     app = DjangoDash('MyDashAppDashPage')
     app.layout = html.Div([

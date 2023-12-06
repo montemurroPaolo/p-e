@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['164.92.66.111', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'huey.contrib.djhuey',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

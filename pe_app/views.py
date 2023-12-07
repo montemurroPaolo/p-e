@@ -3,7 +3,6 @@ from django.shortcuts import render
 import pandas as pd
 import plotly.express as px
 
-
 def home(request):
     csv_file_hour_path = "{}/pe_data_hour.csv".format(settings.BASE_DIR)
     

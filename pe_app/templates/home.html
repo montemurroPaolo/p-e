@@ -12,6 +12,9 @@
  {{ plot_pe|safe }}
 
     </div>
+      <h3>Dash for Paolo</h3>
+      {% load plotly_dash %}
+      {% plotly_app name="ThePlot" ratio=1 %}
   </body>
   <script type="module">
     

@@ -1,14 +1,67 @@
 <!-- home.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plot PE</title>
-</head>
-<body>
-    <div>
-        {{ plot_pe|safe }}
+  </head>
+  <body>
+    <button id="connect">Connect</button>
+    <div id="data" style="display: none;">
+ {{ plot_pe|safe }}
+
     </div>
-</body>
+      <h3>Dash for Paolo</h3>
+      {% load plotly_dash %}
+      {% plotly_app name="ThePlot" ratio=1 %}
+  </body>
+  <script type="module">
+    
+    import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
+
+    const chainId = 1;
+
+    const connect = async () => {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const network = provider.getNetwork();
+
+      if (chainId == 1) {
+        const abi = [
+          {
+            inputs: [
+              { internalType: "address", name: "account", type: "address" },
+            ],
+            name: "balanceOf",
+            outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+            stateMutability: "view",
+            type: "function",
+          },
+        ];
+
+        const address = "0xfb7b4564402e5500db5bb6d63ae671302777c75a";
+
+        const accounts = await provider.send("eth_requestAccounts", []);
+
+        const account = accounts[0];
+        const contract = new ethers.Contract(address, abi, provider);
+        const balance = await contract.balanceOf(account);
+
+        if (balance > 0) {
+          dataDiv.style.display = "block";
+        }else{
+          alert("Must be holder!")
+        }
+      }else{
+        alert("Switch to Ethereum Mainnet!");
+      }
+    };
+
+    const connectBtn = document.getElementById("connect");
+    const dataDiv = document.getElementById("data");
+
+    connectBtn.addEventListener("click", () => {
+      connect();
+    });
+  </script>
 </html>

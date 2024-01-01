@@ -8,7 +8,7 @@ from django.conf import settings
 from .dash_apps import dash_plot
 
 pd.set_option('display.float_format', lambda x: '%.6f' % x)
-test=False
+test=True
 
 def Get_defillama():
     url = "https://api.llama.fi/overview/fees"
@@ -67,7 +67,7 @@ def Coingecko_data():
     # Initialize an empty list to store dataframes
     dfs = []
     if test:
-        range_max = 2
+        range_max = 5 ###
     else:
         range_max = 5
 

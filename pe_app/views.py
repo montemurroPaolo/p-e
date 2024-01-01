@@ -1,7 +1,5 @@
 from .utils import *
 from django.shortcuts import render
-import pandas as pd
-from .dash_apps import dash_plot
 
 def home(request):
     csv_file_hour_path = "{}/pe_data_hour.csv".format(settings.BASE_DIR)

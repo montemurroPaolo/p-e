@@ -4,7 +4,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.express as px
 from django.conf import settings
-
+from .utils import *
 
 file_path = os.path.join(settings.BASE_DIR, "pe_data_hour.csv")
 

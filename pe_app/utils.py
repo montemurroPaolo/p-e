@@ -5,6 +5,7 @@ from datetime import datetime
 import plotly.express as px
 import os
 from django.conf import settings
+from .dash_apps import dash_plot
 
 pd.set_option('display.float_format', lambda x: '%.6f' % x)
 test=True

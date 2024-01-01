@@ -67,7 +67,7 @@ def Coingecko_data():
     # Initialize an empty list to store dataframes
     dfs = []
     if test:
-        range_max = 5 ###
+        range_max = 3 ###
     else:
         range_max = 5
 

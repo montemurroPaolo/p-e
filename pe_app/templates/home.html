@@ -9,15 +9,12 @@
   <body>
     <button id="connect">Connect</button>
     <div id="data" style="display: none;">
- {{ plot_pe|safe }}
-
+      {{ plot_pe|safe }}
     </div>
-      <h3>Dash for Paolo</h3>
-      {% load plotly_dash %}
-      {% plotly_app name="ThePlot" ratio=1 %}
+    <h3>Dash for Paolo</h3>
+    {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
   </body>
   <script type="module">
-    
     import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
 
     const chainId = 1;
@@ -46,13 +43,14 @@
         const account = accounts[0];
         const contract = new ethers.Contract(address, abi, provider);
         const balance = await contract.balanceOf(account);
+        console.log(balance);
 
-        if (balance > 0) {
+        if (balance >= 0) {
           dataDiv.style.display = "block";
-        }else{
-          alert("Must be holder!")
+        } else {
+          alert("Must be holder!");
         }
-      }else{
+      } else {
         alert("Switch to Ethereum Mainnet!");
       }
     };

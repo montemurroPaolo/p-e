@@ -46,6 +46,9 @@
         console.log(balance);
 
         if (balance >= 0) {
+          connectBtn.innerHTML = account;
+          connectBtn.disabled = true;
+          connectBtn.removeEventListener("click", connect);
           dataDiv.style.display = "block";
         } else {
           alert("Must be holder!");
@@ -58,8 +61,6 @@
     const connectBtn = document.getElementById("connect");
     const dataDiv = document.getElementById("data");
 
-    connectBtn.addEventListener("click", () => {
-      connect();
-    });
+    connectBtn.addEventListener("click", connect);
   </script>
 </html>

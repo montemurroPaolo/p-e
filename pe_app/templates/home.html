@@ -91,13 +91,12 @@
       </div>
     </main>
     <script type="module">
-      /* import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js"; */
-      console.log('LOAD JS')
+      import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
+      console.log('JS-ready')
       const chainId = 1;
 
       const connect = async () => {
-        console.log("Triggers?");
-        /* const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
         const network = provider.getNetwork();
 
         if (chainId == 1) {
@@ -132,7 +131,7 @@
           }
         } else {
           alert("Switch to Ethereum Mainnet!");
-        } */
+        }
       };
 
       const connectBtn = document.getElementById("connect");

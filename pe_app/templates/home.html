@@ -13,8 +13,8 @@
     />
     <style>
       html {
-        font-family: 'Roboto Mono', monospace;
-        background-color:#2b2b2b ;
+        font-family: "Roboto Mono", monospace;
+        background-color: #2b2b2b;
         color: #ededed;
       }
       .main-container {
@@ -26,6 +26,10 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      label {
+        color: white;
+        font-family: "Roboto Mono", monospace !important;
+      }
     </style>
   </head>
   <body>
@@ -34,10 +38,11 @@
       <div id="data" style="display: none">{{ plot_pe|safe }}</div>
       <h3>Dash for Paolo</h3>
       <div class="charts-container">
-        {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+        <div class="single-chart">
+          {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+        </div>
       </div>
     </main>
-   
   </body>
   <script type="module">
     import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";

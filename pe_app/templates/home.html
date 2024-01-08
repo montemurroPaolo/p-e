@@ -14,14 +14,23 @@
     <style>
       html {
         font-family: 'Roboto Mono', monospace;
+        background-color:#303030 ;
+        color: #ededed;
+      }
+      .main-container {
+        max-width: 1024px;
+        width: 100%;
       }
     </style>
   </head>
   <body>
-    <button id="connect">Connect</button>
-    <div id="data" style="display: none">{{ plot_pe|safe }}</div>
-    <h3>Dash for Paolo</h3>
-    {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+    <main class="main-container">
+      <button id="connect">Connect</button>
+      <div id="data" style="display: none">{{ plot_pe|safe }}</div>
+      <h3>Dash for Paolo</h3>
+      {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+    </main>
+   
   </body>
   <script type="module">
     import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";

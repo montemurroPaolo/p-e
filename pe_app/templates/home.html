@@ -71,14 +71,33 @@
         box-shadow: 0px 1px 15px 6px rgba(255, 255, 255, 0.2);
       }
     </style>
-     <script type="module">
-      import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
+  
+  </head>
+  <body>
+    <main class="main-container">
+      <div id="data" style="display: none">{{ plot_pe|safe }}</div>
+      <h1 class="title">Dash for Paolo</h1>
+      <div class="controls">
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit:</div>
+        <button id="connect">Connect</button>
+      </div>
+      <div class="charts-container">
+        <div class="single-chart">
+          {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+        </div>
+        <div class="single-chart">
+          {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+        </div>
+      </div>
+    </main>
+    <script type="module">
+      /* import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js"; */
       console.log('LOAD JS')
       const chainId = 1;
 
       const connect = async () => {
         console.log("Triggers?");
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        /* const provider = new ethers.providers.Web3Provider(window.ethereum);
         const network = provider.getNetwork();
 
         if (chainId == 1) {
@@ -113,7 +132,7 @@
           }
         } else {
           alert("Switch to Ethereum Mainnet!");
-        }
+        } */
       };
 
       const connectBtn = document.getElementById("connect");
@@ -121,24 +140,5 @@
 
       connectBtn.addEventListener("click", connect);
     </script>
-  </head>
-  <body>
-    <main class="main-container">
-      <div id="data" style="display: none">{{ plot_pe|safe }}</div>
-      <h1 class="title">Dash for Paolo</h1>
-      <div class="controls">
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit:</div>
-        <button id="connect">Connect</button>
-      </div>
-      <div class="charts-container">
-        <div class="single-chart">
-          {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
-        </div>
-        <div class="single-chart">
-          {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
-        </div>
-      </div>
-    </main>
-   
   </body>
 </html>

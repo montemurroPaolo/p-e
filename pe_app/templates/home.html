@@ -14,12 +14,17 @@
     <style>
       html {
         font-family: 'Roboto Mono', monospace;
-        background-color:#303030 ;
+        background-color:#2b2b2b ;
         color: #ededed;
       }
       .main-container {
         max-width: 1024px;
+        margin: 0 auto;
         width: 100%;
+      }
+      .charts-container {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     </style>
   </head>
@@ -28,7 +33,9 @@
       <button id="connect">Connect</button>
       <div id="data" style="display: none">{{ plot_pe|safe }}</div>
       <h3>Dash for Paolo</h3>
-      {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+      <div class="charts-container">
+        {% load plotly_dash %} {% plotly_app name="ThePlot" ratio=1 %}
+      </div>
     </main>
    
   </body>

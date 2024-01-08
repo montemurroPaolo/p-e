@@ -96,6 +96,7 @@
     const chainId = 1;
 
     const connect = async () => {
+      console.log('Triggers?')
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const network = provider.getNetwork();
 

@@ -25,6 +25,7 @@
       .charts-container {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
       }
       label {
         color: white;
@@ -46,7 +47,7 @@
   <body>
     <main class="main-container">
       <div id="data" style="display: none">{{ plot_pe|safe }}</div>
-      <h1>Dash for Paolo</h1>
+      <h1 class="title">Dash for Paolo</h1>
       <div class="controls">
         <button id="connect">Connect</button>
       </div>

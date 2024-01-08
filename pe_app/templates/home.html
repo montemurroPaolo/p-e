@@ -28,7 +28,7 @@
         gap: 1rem;
       }
       label {
-        color: white;
+        color: #ededed;
         font-family: "Roboto Mono", monospace !important;
       }
       .single-chart {
@@ -43,14 +43,28 @@
         margin: 1rem 0;
         text-align: center;
       }
+      .controls {
+        margin: 1rem 0 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
       #connect {
         font-family: "Roboto Mono";
         background: transparent;
-        color: white;
+        color: #ededed;
         border-radius: 150px;
-        border: 2px solid white;
+        border: 2px solid #ededed;
         padding: 0.25rem 1rem;
         font-size: 1.2rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      #connect:hover {
+        background-color: #ededed;
+        color: #111111;
+        box-shadow: 0px 1px 15px 6px rgba(255, 255, 255, 0.2);
       }
     </style>
   </head>
@@ -59,6 +73,7 @@
       <div id="data" style="display: none">{{ plot_pe|safe }}</div>
       <h1 class="title">Dash for Paolo</h1>
       <div class="controls">
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit: </div>
         <button id="connect">Connect</button>
       </div>
       <div class="charts-container">
